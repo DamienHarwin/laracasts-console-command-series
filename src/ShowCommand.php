@@ -22,16 +22,4 @@ class ShowCommand extends Command
         $this->showTasks($output);
     }
 
-    private function showTasks(OutputInterface $output)
-    {
-        if (! $tasks = $this->database->fetchAll('tasks'))
-        {
-            return $output->writeln('<info>No tasks at the moment!</info>');
-        }
-        $table = new Table($output);
-        $table->setHeaders(['Id', 'Description'])
-            ->setRows($tasks)
-            ->render();
-
-    }
 }
